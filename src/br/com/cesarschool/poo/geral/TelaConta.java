@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 // incluir conta, alterar, encerrar, bloquear, desbloquear, excluir, buscar, creditar, debitar
 
-public class TelaProduto {
+public class TelaConta {
 
     private static final int CODIGO_DESCONHECIDO = -1;
     private static final Scanner ENTRADA = new Scanner(System.in);
@@ -30,10 +30,10 @@ public class TelaProduto {
             } else if (opcao == 4) {
                 processaBusca();
             } else if (opcao == 5) {
-                System.out.println("Saindo do cadastro de Conta");
+                System.out.println("Saindo do cadastro de Contas");
                 System.exit(0);
             } else {
-                System.out.println("Op��o inv�lida!!");
+                System.out.println("Opção inv�lida!!");
             }
         }
     }
@@ -44,18 +44,18 @@ public class TelaProduto {
         System.out.println("3- Excluir");
         System.out.println("4- Buscar");
         System.out.println("5- Sair");
-        System.out.print("Digite a op��o: ");
+        System.out.print("Digite a opção: ");
     }
 
     private void processaInclusao() {
-        Conta conta = capturaCo(CODIGO_DESCONHECIDO);
+        Conta conta = capturaConta(CODIGO_DESCONHECIDO);
         String retornoValidacao = validar(conta);
         if (retornoValidacao == null) {
             boolean retornoRepositorio = repositorioConta.incluir(conta);
             if (retornoRepositorio) {
-                System.out.println("Conta inclu�do com sucesso!");
+                System.out.println("Conta incluído com sucesso!");
             } else {
-                System.out.println("Erro na inclus�o de conta!");
+                System.out.println("Erro na inclusão de conta!");
             }
         } else {
             System.out.println(retornoValidacao);
@@ -63,14 +63,14 @@ public class TelaProduto {
     }
 
     private void processaAlteracao(long codigo) {
-        Conta conta = capturaCo(codigo);
+        Conta conta = capturaConta(codigo);
         String retornoValidacao = validar(conta);
         if (retornoValidacao == null) {
             boolean retornoRepositorio = repositorioConta.alterar(conta);
             if (retornoRepositorio) {
                 System.out.println("Conta alterado com sucesso!");
             } else {
-                System.out.println("Erro na altera��o de conta!");
+                System.out.println("Erro na alteração de conta!");
             }
         } else {
             System.out.println(retornoValidacao);
@@ -82,13 +82,11 @@ public class TelaProduto {
         long codigo = ENTRADA.nextLong();
         Conta conta = repositorioConta.buscar(codigo);
         if (conta == null) {
-            System.out.println("Conta n�o encontrado!");
+            System.out.println("Conta não encontrado!");
             return CODIGO_DESCONHECIDO;
         } else {
-            System.out.println("C�digo: " + conta.getCodigo());
+            System.out.println("Código: " + conta.getCodigo());
             System.out.println("Nome: " + conta.getNome());
-            System.out.println("Pre�o: " + conta.getPreco());
-            System.out.println("Tipo: " + conta.getTipo().getDescricao());
             return codigo;
         }
     }
@@ -96,13 +94,13 @@ public class TelaProduto {
     private void processaExclusao(long codigo) {
         boolean retornoRepositorio = repositorioConta.excluir(codigo);
         if (retornoRepositorio) {
-            System.out.println("Conta exclu�do com sucesso!");
+            System.out.println("Conta excluído com sucesso!");
         } else {
-            System.out.println("Erro na exclus�o de conta!");
+            System.out.println("Erro na exclusão de conta!");
         }
     }
 
-    private Conta capturaCo(long codigoDaAlteracao) {
+    private Conta capturaConta(long codigoDaAlteracao) {
         long codigo;
         if (codigoDaAlteracao == CODIGO_DESCONHECIDO) {
             System.out.print("Digite o c�digo: ");
@@ -112,26 +110,22 @@ public class TelaProduto {
         }
         System.out.print("Digite o nome: ");
         String nome = ENTRADA.next();
-        System.out.print("Digite o pre�o: ");
-        double preco = ENTRADA.nextDouble();
         System.out.print("Digite o tipo de conta (1, 2 ou 3): ");
+        // Pode ser um erro
         int codigoTipo = ENTRADA.nextInt();
-        TipoProduto tipo = TipoProduto.obterPorCodigo(codigoTipo);
-        return new Conta(codigo, nome, preco, tipo);
+        return new Conta(codigo, nome, codigoTipo);
     }
 
     private String validar(Conta conta) {
         int validacaoNome = conta.validarNome();
         if (!conta.codigoValido()) {
-            return "C�digo inv�lido!";
+            return "Código inválido!";
         } else if (validacaoNome == Conta.NOME_NAO_INFORMADO) {
-            return "Nome n�o informado!";
+            return "Nome não informado!";
         } else if (validacaoNome == Conta.NOME_MUITO_CURTO) {
             return "Nome muito curto!";
-        } else if (!conta.precoValido()) {
-            return "Pre�o inv�lido!";
         } else if (!conta.tipoPreechido()) {
-            return "Tipo n�o preenchido!";
+            return "Tipo não preenchido!";
         } else {
             return null;
         }
