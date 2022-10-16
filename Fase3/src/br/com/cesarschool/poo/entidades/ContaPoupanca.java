@@ -14,5 +14,17 @@ public class ContaPoupanca extends Conta{
         return false;
     }
 
+    public double alterar_juros(double taxa){
+        if(taxa >= 0) {
+            taxa_juros = taxa;
+        }
+        return taxa_juros;
+    }
+
+    public String getNomeCorrentista() { return correntista.nome; }
+
+    public String getCpfCorrentista() { return correntista.cpf; }
+
+    public Double getTaxaJuros() { return taxa_juros; }
 
 }

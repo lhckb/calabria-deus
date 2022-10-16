@@ -11,8 +11,8 @@ public class Correntista {
         this.cpf = cpf;
     }
 
-    boolean validaCpf() {
-        if (ValidaCPF.isCPF(this.cpf)) {
+     public boolean validaCpf(String cpf) {
+        if (ValidaCPF.isCPF(cpf)) {
             return true;
         }
         return false;

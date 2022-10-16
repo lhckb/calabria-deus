@@ -1,11 +1,14 @@
 package br.com.cesarschool.poo.repositorios;
 
 import br.com.cesarschool.poo.entidades.Conta;
+import br.com.cesarschool.poo.entidades.ContaPoupanca;
 
 public class RepositorioConta {
     private static final int TAMANHO_MAX_PRODUTOS = 1000;
 
     private Conta[] cadastroConta = new Conta[TAMANHO_MAX_PRODUTOS];
+    private ContaPoupanca[] cadastroContaPoupanca = new ContaPoupanca[TAMANHO_MAX_PRODUTOS];
+
     private int tamanhoAtual = 0;
 
     private static RepositorioConta instancia = null;
@@ -49,6 +52,15 @@ public class RepositorioConta {
             return null;
         } else {
             return cadastroConta[indice];
+        }
+    }
+
+    public ContaPoupanca buscarPoupanca(long codigo) {
+        int indice = buscarIndice(codigo);
+        if (indice == -1) {
+            return null;
+        } else {
+            return cadastroContaPoupanca[indice];
         }
     }
 
