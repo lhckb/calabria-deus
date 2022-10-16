@@ -1,4 +1,8 @@
-package br.com.cesarschool.poo.geral;
+package br.com.cesarschool.poo.telas;
+
+import br.com.cesarschool.poo.entidades.Conta;
+import br.com.cesarschool.poo.mediators.ContaMediator;
+import br.com.cesarschool.poo.repositorios.RepositorioConta;
 
 import java.util.Scanner;
 
@@ -117,14 +121,14 @@ public class TelaConta {
     }
 
     private String validar(Conta conta) {
-        int validacaoNome = conta.validarNome();
-        if (!conta.codigoValido()) {
+        int validacaoNome = ContaMediator.validarNome(conta);
+        if (!ContaMediator.codigoValido(conta)) {
             return "Código inválido!";
         } else if (validacaoNome == Conta.NOME_NAO_INFORMADO) {
             return "Nome não informado!";
         } else if (validacaoNome == Conta.NOME_MUITO_CURTO) {
             return "Nome muito curto!";
-        } else if (!conta.tipoPreechido()) {
+        } else if (!ContaMediator.tipoPreechido(conta)) {
             return "Tipo não preenchido!";
         } else {
             return null;

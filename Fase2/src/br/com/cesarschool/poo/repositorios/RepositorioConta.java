@@ -1,4 +1,6 @@
-package br.com.cesarschool.poo.geral;
+package br.com.cesarschool.poo.repositorios;
+
+import br.com.cesarschool.poo.entidades.Conta;
 
 public class RepositorioConta {
     private static final int TAMANHO_MAX_PRODUTOS = 1000;
