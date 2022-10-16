@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9711a811-82f7-41c6-a1cc-e13a0925e6ad" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Fase3/Fase3.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/entidades/Conta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/entidades/ContaPoupanca.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/entidades/Correntista.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/mediators/ContaMediator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/mediators/CorrentistaMediator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/repositorios/RepositorioConta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/repositorios/RepositorioCorrentista.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/telas/TelaConta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/geral/Conta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/entidades/Conta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/geral/RepositorioConta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/repositorios/RepositorioConta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/geral/TelaConta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/telas/TelaConta.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,13 +47,23 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "C:/Users/rjhxa/Documents/GitHub/calabria-deus",
+    "last_opened_file_path": "C:/Users/Luís/Documents/OOPproject/Fase3/src/br/com/cesarschool/poo/entidades",
     "settings.editor.selected.configurable": "Errors"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Luís\Documents\OOPproject\Fase3\src\br\com\cesarschool\poo\entidades" />
+      <recent name="C:\Users\Luís\Documents\OOPproject\Fase3\src\br\com\cesarschool\poo" />
+      <recent name="C:\Users\Luís\Documents\OOPproject\Fase3\src" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Luís\Documents\OOPproject\Fase2\src" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="br.com.cesarschool.poo.telas" />
+      <recent name="br.com.cesarschool.poo.repositorios" />
+      <recent name="br.com.cesarschool.poo.mediators" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
