@@ -110,7 +110,7 @@ public class TelaConta {
         }
         System.out.print("Digite o nome: ");
         String nome = ENTRADA.next();
-        System.out.print("Digite o tipo de conta (1, 2 ou 3): ");
+        System.out.print("Digite o tipo de conta (1- Corrente): ");
         // Pode ser um erro
         int codigoTipo = ENTRADA.nextInt();
         return new Conta(codigo, nome, codigoTipo);

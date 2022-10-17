@@ -11,8 +11,8 @@ public class Conta {
     final int ENCERRADA = 2;
     final int BLOQUEADA = 3;
 
-    final int SUCESSO = 1;
-    final int FRACASSO = 0;
+    final int SUCESSO = 0;
+    final int FRACASSO = -1;
 
     private long numero;
     private String nome;

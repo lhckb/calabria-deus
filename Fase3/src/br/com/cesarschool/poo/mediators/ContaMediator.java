@@ -15,8 +15,8 @@ public class ContaMediator {
     static final int ENCERRADA = 2;
     static final int BLOQUEADA = 3;
 
-    static final int SUCESSO = 1;
-    static final int FRACASSO = 0;
+    static final int SUCESSO = 0;
+    static final int FRACASSO = -1;
 
     private RepositorioConta repositorioConta = RepositorioConta.getInstancia();
 
