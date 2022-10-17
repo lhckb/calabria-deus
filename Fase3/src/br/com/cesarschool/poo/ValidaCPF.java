@@ -6,7 +6,7 @@ import java.util.InputMismatchException;
 public class ValidaCPF {
 
     public static boolean validarCPF(String cpf) {
-        Pattern pattern = Pattern.compile("([0-9]{2}[\\.]?[0-9]{3}[\\.]?[0-9]{3}[\\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\\.]?[0-9]{3}[\\.]?[0-9]{3}[-]?[0-9]{2})\n", Pattern.CASE_INSENSITIVE);
+        Pattern pattern = Pattern.compile("^\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(cpf);
         boolean matchFound = matcher.find();
         if(matchFound) {

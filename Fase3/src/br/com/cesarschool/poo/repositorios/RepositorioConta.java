@@ -10,6 +10,7 @@ public class RepositorioConta {
     private ContaPoupanca[] cadastroContaPoupanca = new ContaPoupanca[TAMANHO_MAX_PRODUTOS];
 
     private int tamanhoAtual = 0;
+    private int tamanhoAtualPoupanca = 0;
 
     private static RepositorioConta instancia = null;
 
@@ -21,7 +22,7 @@ public class RepositorioConta {
     }
 
     public boolean incluir(Conta conta) {
-        if (buscarIndice(conta.getCodigo()) != -1) {
+        if (buscarIndice(conta.getCodigo(), 1) != -1) {
             return false;
         } else if (tamanhoAtual == TAMANHO_MAX_PRODUTOS - 1) {
             return false;
@@ -36,8 +37,26 @@ public class RepositorioConta {
             return true;
         }
     }
+
+    public boolean incluir(ContaPoupanca conta) {
+        if (buscarIndice(conta.getCodigo(), 2) != -1) {
+            return false;
+        } else if (tamanhoAtualPoupanca == TAMANHO_MAX_PRODUTOS - 1) {
+            return false;
+        } else {
+            for (int i = 0; i < cadastroContaPoupanca.length; i++) {
+                if (cadastroContaPoupanca[i] == null) {
+                    cadastroContaPoupanca[i] = conta;
+                    break;
+                }
+            }
+            tamanhoAtualPoupanca++;
+            return true;
+        }
+    }
+
     public boolean alterar(Conta conta) {
-        int indice = buscarIndice(conta.getCodigo());
+        int indice = buscarIndice(conta.getCodigo(), 1);
         if (indice == -1) {
             return false;
         } else {
@@ -46,8 +65,18 @@ public class RepositorioConta {
         }
     }
 
+    public boolean alterar(ContaPoupanca conta) {
+        int indice = buscarIndice(conta.getCodigo(), 2);
+        if (indice == -1) {
+            return false;
+        } else {
+            cadastroContaPoupanca[indice] = conta;
+            return true;
+        }
+    }
+
     public Conta buscar(long codigo) {
-        int indice = buscarIndice(codigo);
+        int indice = buscarIndice(codigo, 1);
         if (indice == -1) {
             return null;
         } else {
@@ -56,7 +85,7 @@ public class RepositorioConta {
     }
 
     public ContaPoupanca buscarPoupanca(long codigo) {
-        int indice = buscarIndice(codigo);
+        int indice = buscarIndice(codigo, 2);
         if (indice == -1) {
             return null;
         } else {
@@ -64,24 +93,39 @@ public class RepositorioConta {
         }
     }
 
-    public boolean excluir(long codigo) {
-        int indice = buscarIndice(codigo);
+    public boolean excluir(long codigo, int tipo) {
+        int indice = buscarIndice(codigo, tipo);
         if (indice == -1) {
             return false;
-        } else {
+        } else if (tipo == 1) {
             cadastroConta[indice] = null;
             tamanhoAtual--;
             return true;
+        } else if (tipo == 2) {
+            cadastroContaPoupanca[indice] = null;
+            tamanhoAtualPoupanca--;
+            return true;
         }
+        return false;
     }
 
-    private int buscarIndice(long codigo) {
-        for (int i = 0; i < cadastroConta.length; i++) {
-            Conta conta = cadastroConta[i];
-            if (conta != null && conta.getCodigo() == codigo) {
-                return i;
+    private int buscarIndice(long codigo, int tipo) {
+        if (tipo == 1) {
+            for (int i = 0; i < cadastroConta.length; i++) {
+                Conta conta = cadastroConta[i];
+                if (conta != null && conta.getCodigo() == codigo) {
+                    return i;
+                }
+            }
+        } else if (tipo == 2) {
+            for (int i = 0; i < cadastroContaPoupanca.length; i++) {
+                ContaPoupanca conta = cadastroContaPoupanca[i];
+                if (conta != null && conta.getCodigo() == codigo) {
+                    return i;
+                }
             }
         }
+
         return -1;
     }
 }

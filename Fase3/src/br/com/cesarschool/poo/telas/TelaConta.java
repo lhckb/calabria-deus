@@ -24,12 +24,14 @@ public class TelaConta {
             if (opcao == 1) {
                 processaInclusao();
             } else if (opcao == 2) {
-                codigo = processaBusca();
+                System.out.println("Digite o código da conta: ");
+                codigo = ENTRADA.nextLong();
                 if (codigo != CODIGO_DESCONHECIDO) {
                     processaAlteracao(codigo);
                 }
             } else if (opcao == 3) {
-                codigo = processaBusca();
+                System.out.println("Digite o código da conta: ");
+                codigo = ENTRADA.nextLong();
                 if (codigo != CODIGO_DESCONHECIDO) {
                     processaExclusao(codigo);
                 }
@@ -62,7 +64,6 @@ public class TelaConta {
             String retornoValidacao = validar(conta);
 
             Correntista correntistaCorrente = conta.correntista;
-            System.out.println(correntistaCorrente.cpf);
             if(correntistaCorrente.validaCpf(correntistaCorrente.cpf) == false) {
                 System.out.println("Cpf Inválido!");
             }
@@ -163,7 +164,7 @@ public class TelaConta {
         System.out.println("Deseja buscar que tipo de Conta: 1- Corrente | 2- Poupança");
         int escolha = ENTRADA.nextInt();
 
-        if(escolha == 1) {
+        if (escolha == 1) {
             System.out.print("Digite o c�digo: ");
             long codigo = ENTRADA.nextLong();
             Conta conta = repositorioConta.buscar(codigo);
@@ -197,11 +198,22 @@ public class TelaConta {
     }
 
     private void processaExclusao(long codigo) {
-        boolean retornoRepositorio = repositorioConta.excluir(codigo);
-        if (retornoRepositorio) {
-            System.out.println("Conta excluído com sucesso!");
-        } else {
-            System.out.println("Erro na exclusão de conta!");
+        System.out.println("Deseja excluir que tipo de Conta: 1- Corrente | 2- Poupança");
+        int escolha = ENTRADA.nextInt();
+        if (escolha == 1) {
+            boolean retornoRepositorio = repositorioConta.excluir(codigo, 1);
+            if (retornoRepositorio) {
+                System.out.println("Conta excluído com sucesso!");
+            } else {
+                System.out.println("Erro na exclusão de conta!");
+            }
+        } else if (escolha == 2) {
+            boolean retornoRepositorio = repositorioConta.excluir(codigo, 2);
+            if (retornoRepositorio) {
+                System.out.println("Conta excluído com sucesso!");
+            } else {
+                System.out.println("Erro na exclusão de conta!");
+            }
         }
     }
 
