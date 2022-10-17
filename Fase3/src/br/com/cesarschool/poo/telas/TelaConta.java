@@ -64,7 +64,7 @@ public class TelaConta {
             Correntista correntistaCorrente = conta.correntista;
             System.out.println(correntistaCorrente.cpf);
             if(correntistaCorrente.validaCpf(correntistaCorrente.cpf) == false) {
-                System.out.println("Correntista não Encontrado!");
+                System.out.println("Cpf Inválido!");
             }
             else {
                 if (retornoValidacao == null) {
@@ -81,28 +81,33 @@ public class TelaConta {
         }
         else {
             ContaPoupanca contaPoupanca = capturaContaPoupanca(CODIGO_DESCONHECIDO);
-            Correntista correntista = contaPoupanca.correntista;
+            Correntista correntistaPoupanca = contaPoupanca.correntista;
             String retornoValidacao = validar(contaPoupanca);
 
-            System.out.println("Deseja alterar o juros? Sim- Colocar valor desejado | Não- Colocar igual 0");
-            double taxa_juros = ENTRADA.nextDouble();
-            contaPoupanca.alterar_juros(taxa_juros);
+            if(correntistaPoupanca.validaCpf(correntistaPoupanca.cpf) == false) {
+                System.out.println("Cpf Inválido!");
+            }
+            else {
+                System.out.println("Deseja alterar o juros? Sim- Colocar valor desejado | Não- Colocar igual 0");
+                double taxa_juros = ENTRADA.nextDouble();
+                contaPoupanca.alterar_juros(taxa_juros);
 
-            if (retornoValidacao == null) {
-                boolean retornoRepositorio = repositorioConta.incluir(contaPoupanca);
-                if (retornoRepositorio) {
-                    System.out.println("Conta incluído com sucesso!");
+                if (retornoValidacao == null) {
+                    boolean retornoRepositorio = repositorioConta.incluir(contaPoupanca);
+                    if (retornoRepositorio) {
+                        System.out.println("Conta incluído com sucesso!");
+                    } else {
+                        System.out.println("Erro na inclusão de conta!");
+                    }
                 } else {
-                    System.out.println("Erro na inclusão de conta!");
+                    System.out.println(retornoValidacao);
                 }
-            } else {
-                System.out.println(retornoValidacao);
             }
         }
     }
 
     private void processaAlteracao(long codigo) {
-        System.out.println("Escolha o tipo de Conta que deseja adicionar: 1- Conta Corrente | 2- Conta Poupança");
+        System.out.println("Escolha o tipo de Conta que deseja alterar: 1- Conta Corrente | 2- Conta Poupança");
         int escolha = ENTRADA.nextInt();
 
         if(escolha == 1) {

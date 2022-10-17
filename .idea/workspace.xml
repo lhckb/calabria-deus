@@ -3,15 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9711a811-82f7-41c6-a1cc-e13a0925e6ad" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fase1/src/br/com/cesarschool/poo/geral/Conta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase1/src/br/com/cesarschool/poo/geral/Conta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fase1/src/br/com/cesarschool/poo/geral/TelaConta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase1/src/br/com/cesarschool/poo/geral/TelaConta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/entidades/Conta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/entidades/Conta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/mediators/ContaMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/mediators/ContaMediator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/telas/TelaConta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/telas/TelaConta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/ValidaCPF.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/ValidaCPF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/entidades/Conta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/entidades/Conta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/entidades/Correntista.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/entidades/Correntista.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/mediators/ContaMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/mediators/ContaMediator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/telas/TelaConta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/telas/TelaConta.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,6 +66,8 @@
       <option name="presentableId" value="Default" />
       <updated>1664831784942</updated>
       <workItem from="1665763216283" duration="7162000" />
+      <workItem from="1666033588130" duration="1859000" />
+      <workItem from="1666038336129" duration="785000" />
     </task>
     <servers />
   </component>
