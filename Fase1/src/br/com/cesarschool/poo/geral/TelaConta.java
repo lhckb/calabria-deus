@@ -26,7 +26,7 @@ public class TelaConta {
             } else if (opcao == 3) { // BLOQUEAR
                 codigo = processaBusca();
                 if (codigo != CODIGO_DESCONHECIDO) {
-                    Conta conta = capturaConta(codigo);
+                    Conta conta = repositorioConta.buscar(codigo);
                     bloquear(conta);
                 }
             } else if (opcao == 4) { // ENCERRAR
@@ -182,7 +182,7 @@ public class TelaConta {
         // Pode ser um erro
         int codigoTipo = ENTRADA.nextInt();
         LocalDate dataAbertura = LocalDate.now();
-        return new Conta(codigo, nome, codigoTipo, dataAbertura);
+        return new Conta(codigo, nome, codigoTipo);
     }
 
     private String validar(Conta conta) {

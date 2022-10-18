@@ -7,7 +7,7 @@ public class Conta {
     public static final int NOME_MUITO_CURTO = 2;
     public static final int TAMANHO_MINIMO_NOME = 3;
     double saldo = 0;
-    long data_de_criacao = System.currentTimeMillis();
+    // long data_de_criacao = System.currentTimeMillis();
 
     final int ATIVA = 1;
     final int ENCERRADA = 2;
@@ -22,12 +22,12 @@ public class Conta {
     private String nome;
     private LocalDate dataAbertura;
 
-    public Conta(long codigo, String nome, int status, LocalDate dataAbertura) {
+    public Conta(long codigo, String nome, int status) {
         this.numero = codigo;
         this.nome = nome;
         // Pode ser um erro
         this.status = status;
-        this.dataAbertura = dataAbertura;
+        this.dataAbertura = LocalDate.now();
     }
 
     public long getCodigo() {
@@ -63,9 +63,9 @@ public class Conta {
         if (status == BLOQUEADA || status == ENCERRADA) {
             return 0;
         }
-        int days_since_epoch = (int) ((System.currentTimeMillis() / (1000*60*60*24)) % 7);
-        int days_since_epoch_from_created_time = (int) ((data_de_criacao / (1000*60*60*24)) % 7);
-        double F = (saldo * 3) + (days_since_epoch - days_since_epoch_from_created_time) * 2;
+
+        long diff_days = (LocalDate.now().toEpochDay()) - (LocalDate.now().toEpochDay());
+        double F = (saldo * 3) + (diff_days) * 2;
 
         if (F < 5800) {
             return 1; // Bronze

@@ -53,12 +53,26 @@
       <recent name="C:\Users\Luís\Documents\OOPproject\Fase2\src" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="br.com.cesarschool.poo.geral" />
       <recent name="br.com.cesarschool.poo.telas" />
       <recent name="br.com.cesarschool.poo.repositorios" />
       <recent name="br.com.cesarschool.poo.mediators" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.br.com.cesarschool.poo.geral.main_teste">
+    <configuration name="br.com.cesarschool.poo.geral.main_teste" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="br.com.cesarschool.poo.geral.main_teste" />
+      <module name="Fase1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="br.com.cesarschool.poo.geral.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="main_teste" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="br.com.cesarschool.poo.main_teste" />
       <module name="Fase3" />
@@ -74,6 +88,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.br.com.cesarschool.poo.geral.main_teste" />
         <item itemvalue="Application.main_teste" />
       </list>
     </recent_temporary>
