@@ -2,6 +2,8 @@ package br.com.cesarschool.poo.entidades;
 
 import br.com.cesarschool.poo.ValidaCPF;
 
+import java.time.LocalDate;
+
 public class Conta {
     public static final int NOME_NAO_INFORMADO = 1;
     public static final int NOME_MUITO_CURTO = 2;
@@ -10,16 +12,16 @@ public class Conta {
     public int status = 0;
     public long data_de_criacao = System.currentTimeMillis();
 
-    final int ATIVA = 1;
-    final int ENCERRADA = 2;
-    final int BLOQUEADA = 3;
+    public final int ATIVA = 1;
+    public final int ENCERRADA = 2;
+    public final int BLOQUEADA = 3;
 
     final int SUCESSO = 0;
     final int FRACASSO = -1;
 
     public long numero;
     public String nome;
-    private double preco;
+    private LocalDate dataAbertura;
 
     public Correntista correntista;
 
@@ -29,6 +31,7 @@ public class Conta {
         // Pode ser um erro
         this.status = status;
         this.correntista = correntista;
+        this.dataAbertura = LocalDate.now();
     }
 
     public long getCodigo() {
@@ -40,5 +43,27 @@ public class Conta {
 
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
+    public LocalDate getDataAbertura() { return dataAbertura; }
+    public void setDataAbertura(LocalDate dataAbertura) { this.dataAbertura = dataAbertura; }
+    public int calcularEscore(Conta conta) {
+        if (status == BLOQUEADA || status == ENCERRADA) {
+            return 0;
+        }
+        long diff_days = (LocalDate.now().toEpochDay()) - (LocalDate.now().toEpochDay());
+        double F = (this.saldo * 3) + (diff_days) * 2;
+
+        if (F < 5800) {
+            return 1;
+        }
+        else if (F < 13000){
+            return 2;
+        }
+        else if (F < 39000){
+            return 3;
+        }
+        else {
+            return 4;
+        }
+    }
 
 }

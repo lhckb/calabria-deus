@@ -2,6 +2,8 @@ package br.com.cesarschool.poo.repositorios;
 
 import br.com.cesarschool.poo.entidades.Conta;
 
+import java.time.LocalDate;
+
 public class RepositorioConta {
     private static final int TAMANHO_MAX_PRODUTOS = 1000;
 
@@ -24,14 +26,13 @@ public class RepositorioConta {
             return true;
         }
     }
-    public boolean alterar(Conta conta) {
-        int indice = buscarIndice(conta.getCodigo());
-        if (indice == -1) {
+    public boolean alterar(long numero, LocalDate novaDataAbertura) {
+        int indice = buscarIndice(numero);
+        if (indice < 0) {
             return false;
-        } else {
-            cadastroConta[indice] = conta;
-            return true;
         }
+        cadastroConta[indice].setDataAbertura(novaDataAbertura);
+        return true;
     }
 
     public Conta buscar(long codigo) {

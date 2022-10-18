@@ -7,8 +7,6 @@ public class Conta {
     public static final int NOME_MUITO_CURTO = 2;
     public static final int TAMANHO_MINIMO_NOME = 3;
     double saldo = 0;
-    // long data_de_criacao = System.currentTimeMillis();
-
     final int ATIVA = 1;
     final int ENCERRADA = 2;
     final int BLOQUEADA = 3;
@@ -43,7 +41,7 @@ public class Conta {
     public LocalDate getDataAbertura() { return dataAbertura; }
     public void setDataAbertura(LocalDate dataAbertura) { this.dataAbertura = dataAbertura; }
 
-    int creditar(double valor) {
+    public int creditar(double valor) {
         if (this.status == ENCERRADA || valor < 0) { return FRACASSO; }
         else {
             this.saldo += valor;
@@ -51,8 +49,8 @@ public class Conta {
         }
     }
 
-    int debitar(double valor) {
-        if (this.status == BLOQUEADA || valor < 0) { return FRACASSO; }
+    public int debitar(double valor) {
+        if (this.status == BLOQUEADA || valor < 0 || this.saldo < 0) { return FRACASSO; }
         else {
             this.saldo -= valor;
             return SUCESSO;

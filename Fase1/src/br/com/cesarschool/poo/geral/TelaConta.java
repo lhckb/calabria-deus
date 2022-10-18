@@ -32,20 +32,38 @@ public class TelaConta {
             } else if (opcao == 4) { // ENCERRAR
                 codigo = processaBusca();
                 if (codigo != CODIGO_DESCONHECIDO) {
-                    Conta conta = capturaConta(codigo);
+                    Conta conta = repositorioConta.buscar(codigo);
                     encerrar(conta);
                 }
             }
             else if (opcao == 5) { // Desbloquear
                 codigo = processaBusca();
                 if (codigo != CODIGO_DESCONHECIDO) {
-                    Conta conta = capturaConta(codigo);
+                    Conta conta = repositorioConta.buscar(codigo);
                     desbloquear(conta);
                 }
             } else if (opcao == 6) { // CREDITAR
+                codigo = processaBusca();
+                if(codigo != CODIGO_DESCONHECIDO) {
+                    System.out.print("Digite o valor a ser creditado: ");
+                    double valor = ENTRADA.nextDouble();
+                    Conta conta = repositorioConta.buscar(codigo);
+                    int resultado = conta.creditar(valor);
 
+                    if(resultado != 0) System.out.println("Valor não aceito!");
+                    else System.out.println("Valor creditado!");
+                }
             } else if (opcao == 7) { // DEBITAR
+                codigo = processaBusca();
+                if(codigo != CODIGO_DESCONHECIDO) {
+                    System.out.print("Digite o valor a ser debitado: ");
+                    double valor = ENTRADA.nextDouble();
+                    Conta conta = repositorioConta.buscar(codigo);
+                    int resultado = conta.debitar(valor);
 
+                    if(resultado != 0) System.out.println("Valor não aceito!");
+                    else System.out.println("Valor debitado!");
+                }
             } else if (opcao == 8) { // EXCLUIR
                 codigo = processaBusca();
                 if (codigo != CODIGO_DESCONHECIDO) {
@@ -64,12 +82,12 @@ public class TelaConta {
 
     private void imprimeMenuPrincipal() {
         System.out.println("1- Incluir"); // Já tem
-        System.out.println("2- Alterar");
+        System.out.println("2- Alterar"); // Já tem
         System.out.println("3- Bloquear"); // Já tem
         System.out.println("4- Encerrar"); // Já tem
         System.out.println("5- Desbloquear"); // Já tem
-        System.out.println("6- Creditar");
-        System.out.println("7- Debitar");
+        System.out.println("6- Creditar"); // Já tem
+        System.out.println("7- Debitar"); // Já tem
         System.out.println("8- Excluir"); // Ja tem
         System.out.println("9- Buscar"); // Ja tem
         System.out.println("10- Sair"); // Ja tem
@@ -92,11 +110,10 @@ public class TelaConta {
     }
 
     private void processaAlteracao(long codigo) {
-        // Mudar para alterar a data de abertura
-        Conta conta = capturaConta(codigo);
+        Conta conta = repositorioConta.buscar(codigo);
         String retornoValidacao = validar(conta);
         if (retornoValidacao == null) {
-            boolean retornoRepositorio = repositorioConta.alterar(conta);
+            boolean retornoRepositorio = repositorioConta.alterar(conta.getCodigo(), novaData(conta));
             if (retornoRepositorio) {
                 System.out.println("Conta alterado com sucesso!");
             } else {
@@ -129,9 +146,8 @@ public class TelaConta {
         else conta.status = conta.ATIVA;
     }
 
-
     private long processaBusca() {
-        System.out.print("Digite o c�digo: ");
+        System.out.print("Digite o código: ");
         long codigo = ENTRADA.nextLong();
         Conta conta = repositorioConta.buscar(codigo);
         if (conta == null) {
@@ -140,6 +156,9 @@ public class TelaConta {
         } else {
             System.out.println("Código: " + conta.getCodigo());
             System.out.println("Nome: " + conta.getNome());
+            System.out.println("Status: " + conta.status);
+            System.out.println("Data de Abertura: " + conta.getDataAbertura());
+            System.out.println("Saldo: " + conta.saldo);
             int conta_score = conta.calcularEscore();
             switch (conta_score) {
                 case 1:
@@ -171,7 +190,7 @@ public class TelaConta {
     private Conta capturaConta(long codigoDaAlteracao) {
         long codigo;
         if (codigoDaAlteracao == CODIGO_DESCONHECIDO) {
-            System.out.print("Digite o c�digo: ");
+            System.out.print("Digite o código: ");
             codigo = ENTRADA.nextLong();
         } else {
             codigo = codigoDaAlteracao;
@@ -185,6 +204,33 @@ public class TelaConta {
         return new Conta(codigo, nome, codigoTipo);
     }
 
+    public static LocalDate novaData(Conta conta) {
+        LocalDate novaData = null;
+        LocalDate dataLimite = conta.getDataAbertura().minusDays(1).minusMonths(1);
+        int dia, mes, ano;
+        boolean validarData = true;
+
+        while (validarData) {
+            System.out.print("Dia: ");
+            dia = ENTRADA.nextInt();
+            System.out.print("Mes: ");
+            mes = ENTRADA.nextInt();
+            System.out.print("Ano: ");
+            ano = ENTRADA.nextInt();
+            novaData = LocalDate.of(ano, mes, dia);
+
+            if (novaData.equals(conta.getDataAbertura())) {
+                validarData = false;
+
+            } else if (novaData.isAfter(dataLimite) && novaData.isBefore(conta.getDataAbertura())) {
+                validarData = false;
+
+            } else {
+                System.out.println("Data não é válida!");
+            }
+        }
+        return novaData;
+    }
     private String validar(Conta conta) {
         int validacaoNome = conta.validarNome();
         if (!conta.codigoValido()) {

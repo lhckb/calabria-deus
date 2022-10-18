@@ -3,6 +3,8 @@ package br.com.cesarschool.poo.repositorios;
 import br.com.cesarschool.poo.entidades.Conta;
 import br.com.cesarschool.poo.entidades.ContaPoupanca;
 
+import java.time.LocalDate;
+
 public class RepositorioConta {
     private static final int TAMANHO_MAX_PRODUTOS = 1000;
 
@@ -38,7 +40,7 @@ public class RepositorioConta {
         }
     }
 
-    public boolean incluir(ContaPoupanca conta) {
+    public boolean incluirPoupanca(ContaPoupanca conta) {
         if (buscarIndice(conta.getCodigo(), 2) != -1) {
             return false;
         } else if (tamanhoAtualPoupanca == TAMANHO_MAX_PRODUTOS - 1) {
@@ -55,24 +57,22 @@ public class RepositorioConta {
         }
     }
 
-    public boolean alterar(Conta conta) {
-        int indice = buscarIndice(conta.getCodigo(), 1);
-        if (indice == -1) {
+    public boolean alterar(long numero, LocalDate novaDataAbertura, int tipo) {
+        int indice = buscarIndice(numero, tipo);
+        if (indice < 0) {
             return false;
-        } else {
-            cadastroConta[indice] = conta;
-            return true;
         }
+        cadastroConta[indice].setDataAbertura(novaDataAbertura);
+        return true;
     }
 
-    public boolean alterar(ContaPoupanca conta) {
-        int indice = buscarIndice(conta.getCodigo(), 2);
-        if (indice == -1) {
+    public boolean alterarPoupanca(long numero, LocalDate novaDataAbertura, int tipo) {
+        int indice = buscarIndice(numero, tipo);
+        if (indice < 0) {
             return false;
-        } else {
-            cadastroContaPoupanca[indice] = conta;
-            return true;
         }
+        cadastroConta[indice].setDataAbertura(novaDataAbertura);
+        return true;
     }
 
     public Conta buscar(long codigo) {

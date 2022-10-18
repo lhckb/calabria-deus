@@ -4,7 +4,28 @@
     <list default="true" id="9711a811-82f7-41c6-a1cc-e13a0925e6ad" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Fase1/src/br/com/cesarschool/poo/geral/Conta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase1/src/br/com/cesarschool/poo/geral/Conta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fase1/src/br/com/cesarschool/poo/geral/RepositorioConta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase1/src/br/com/cesarschool/poo/geral/RepositorioConta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Fase1/src/br/com/cesarschool/poo/geral/TelaConta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase1/src/br/com/cesarschool/poo/geral/TelaConta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/entidades/Conta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/entidades/Conta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/mediators/ContaMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/mediators/ContaMediator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/repositorios/RepositorioConta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/repositorios/RepositorioConta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/telas/TelaConta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase2/src/br/com/cesarschool/poo/telas/TelaConta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/entidades/Conta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/entidades/Conta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/main_teste.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/mediators/ContaMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/mediators/ContaMediator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/repositorios/RepositorioConta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/repositorios/RepositorioConta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/telas/TelaConta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase3/src/br/com/cesarschool/poo/telas/TelaConta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fase1/br/com/cesarschool/poo/geral/Conta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fase1/br/com/cesarschool/poo/geral/Conta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fase1/br/com/cesarschool/poo/geral/RepositorioConta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fase1/br/com/cesarschool/poo/geral/RepositorioConta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fase1/br/com/cesarschool/poo/geral/TelaConta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fase1/br/com/cesarschool/poo/geral/TelaConta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fase2/br/com/cesarschool/poo/entidades/Conta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fase2/br/com/cesarschool/poo/entidades/Conta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fase2/br/com/cesarschool/poo/mediators/ContaMediator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fase2/br/com/cesarschool/poo/mediators/ContaMediator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fase2/br/com/cesarschool/poo/repositorios/RepositorioConta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fase2/br/com/cesarschool/poo/repositorios/RepositorioConta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fase2/br/com/cesarschool/poo/telas/TelaConta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fase2/br/com/cesarschool/poo/telas/TelaConta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fase3/br/com/cesarschool/poo/entidades/Conta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fase3/br/com/cesarschool/poo/entidades/Conta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fase3/br/com/cesarschool/poo/mediators/ContaMediator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fase3/br/com/cesarschool/poo/mediators/ContaMediator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fase3/br/com/cesarschool/poo/repositorios/RepositorioConta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fase3/br/com/cesarschool/poo/repositorios/RepositorioConta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Fase3/br/com/cesarschool/poo/telas/TelaConta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fase3/br/com/cesarschool/poo/telas/TelaConta.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +81,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.br.com.cesarschool.poo.geral.main_teste">
-    <configuration name="br.com.cesarschool.poo.geral.main_teste" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="br.com.cesarschool.poo.geral.main_teste" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="br.com.cesarschool.poo.geral.main_teste" />
       <module name="Fase1" />
       <extension name="coverage">
@@ -86,9 +107,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.br.com.cesarschool.poo.geral.main_teste" />
+      <item itemvalue="Application.main_teste" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.br.com.cesarschool.poo.geral.main_teste" />
         <item itemvalue="Application.main_teste" />
       </list>
     </recent_temporary>
@@ -103,7 +127,8 @@
       <updated>1664831784942</updated>
       <workItem from="1665763216283" duration="7162000" />
       <workItem from="1666033588130" duration="1859000" />
-      <workItem from="1666038336129" duration="4750000" />
+      <workItem from="1666038336129" duration="12918000" />
+      <workItem from="1666060573092" duration="379000" />
     </task>
     <servers />
   </component>

@@ -23,17 +23,22 @@ public class ContaMediator {
     public boolean incluir(Conta conta) {
         return repositorioConta.incluir(conta);
     }
-    public boolean alterar(Conta conta) {
-        return repositorioConta.alterar(conta);
+    public boolean incluir(ContaPoupanca conta) {
+        return repositorioConta.incluirPoupanca(conta);
     }
+
+    public boolean alterar(Conta conta) {
+        return repositorioConta.alterar(conta.numero, conta.getDataAbertura(), 1);
+    }
+    public boolean alterar(ContaPoupanca conta) { return repositorioConta.alterar(conta.numero, conta.getDataAbertura(), 2); }
     public Conta buscar(int codigo) {
         return repositorioConta.buscar(codigo);
     }
-    public boolean excluir(int codigo) {
-        return repositorioConta.excluir(codigo);
+    public boolean excluir(int codigo, int tipo) {
+        return repositorioConta.excluir(codigo, tipo);
     }
 
-    static int creditar(Conta conta, double valor) {
+    public static int creditar(Conta conta, double valor) {
         if (conta instanceof ContaPoupanca) {
             conta.saldo = conta.saldo + (1 + ((ContaPoupanca) conta).taxa_juros / 100) * valor;
             ((ContaPoupanca) conta).total_depositos++;
@@ -48,35 +53,23 @@ public class ContaMediator {
         }
     }
 
-    static int debitar(Conta conta, double valor) {
-        if (conta.status == BLOQUEADA || valor < 0) { return FRACASSO; }
+    public static int debitar(Conta conta, double valor) {
+        if (conta instanceof ContaPoupanca) {
+            if (((ContaPoupanca) conta).status == BLOQUEADA || valor < 0) { return FRACASSO; }
+            else {
+                ((ContaPoupanca) conta).saldo = ((ContaPoupanca) conta).saldo - valor;
+                return SUCESSO;
+            }
+        }
         else {
-            conta.saldo -= valor;
-            return SUCESSO;
+            if (conta.status == BLOQUEADA || valor < 0) { return FRACASSO; }
+            else {
+                conta.saldo -= valor;
+                return SUCESSO;
+            }
         }
     }
 
-    static int calcularEscore(Conta conta) {
-        if (conta.status == BLOQUEADA || conta.status == ENCERRADA) {
-            return 0;
-        }
-        int days_since_epoch = (int) ((System.currentTimeMillis() / (1000*60*60*24)) % 7);
-        int days_since_epoch_from_created_time = (int) ((conta.data_de_criacao / (1000*60*60*24)) % 7);
-        double F = (conta.saldo * 3) + (days_since_epoch - days_since_epoch_from_created_time) * 2;
-
-        if (F < 5800) {
-            return 1;
-        }
-        else if (F < 13000){
-            return 2;
-        }
-        else if (F < 39000){
-            return 3;
-        }
-        else {
-            return 4;
-        }
-    }
     public static boolean codigoValido(Conta conta) {
         if (conta.numero <= 0) {
             return false;
