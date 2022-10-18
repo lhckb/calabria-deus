@@ -1,5 +1,6 @@
 package br.com.cesarschool.poo.geral;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 // incluir conta, alterar, encerrar, bloquear, desbloquear, excluir, buscar, creditar, debitar
@@ -15,35 +16,63 @@ public class TelaConta {
             long codigo = CODIGO_DESCONHECIDO;
             imprimeMenuPrincipal();
             int opcao = ENTRADA.nextInt();
-            if (opcao == 1) {
+            if (opcao == 1) { // INCLUIR
                 processaInclusao();
-            } else if (opcao == 2) {
+            }else if (opcao == 2) { // ALTERAR
                 codigo = processaBusca();
                 if (codigo != CODIGO_DESCONHECIDO) {
                     processaAlteracao(codigo);
                 }
-            } else if (opcao == 3) {
+            } else if (opcao == 3) { // BLOQUEAR
+                codigo = processaBusca();
+                if (codigo != CODIGO_DESCONHECIDO) {
+                    Conta conta = capturaConta(codigo);
+                    bloquear(conta);
+                }
+            } else if (opcao == 4) { // ENCERRAR
+                codigo = processaBusca();
+                if (codigo != CODIGO_DESCONHECIDO) {
+                    Conta conta = capturaConta(codigo);
+                    encerrar(conta);
+                }
+            }
+            else if (opcao == 5) { // Desbloquear
+                codigo = processaBusca();
+                if (codigo != CODIGO_DESCONHECIDO) {
+                    Conta conta = capturaConta(codigo);
+                    desbloquear(conta);
+                }
+            } else if (opcao == 6) { // CREDITAR
+
+            } else if (opcao == 7) { // DEBITAR
+
+            } else if (opcao == 8) { // EXCLUIR
                 codigo = processaBusca();
                 if (codigo != CODIGO_DESCONHECIDO) {
                     processaExclusao(codigo);
                 }
-            } else if (opcao == 4) {
+            } else if (opcao == 9) { // BUSCAR
                 processaBusca();
-            } else if (opcao == 5) {
+            } else if (opcao == 10) { // SAIR
                 System.out.println("Saindo do cadastro de Contas");
                 System.exit(0);
             } else {
-                System.out.println("Opção inv�lida!!");
+                System.out.println("Opção inválida!!");
             }
         }
     }
 
     private void imprimeMenuPrincipal() {
-        System.out.println("1- Incluir");
+        System.out.println("1- Incluir"); // Já tem
         System.out.println("2- Alterar");
-        System.out.println("3- Excluir");
-        System.out.println("4- Buscar");
-        System.out.println("5- Sair");
+        System.out.println("3- Bloquear"); // Já tem
+        System.out.println("4- Encerrar"); // Já tem
+        System.out.println("5- Desbloquear"); // Já tem
+        System.out.println("6- Creditar");
+        System.out.println("7- Debitar");
+        System.out.println("8- Excluir"); // Ja tem
+        System.out.println("9- Buscar"); // Ja tem
+        System.out.println("10- Sair"); // Ja tem
         System.out.print("Digite a opção: ");
     }
 
@@ -63,6 +92,7 @@ public class TelaConta {
     }
 
     private void processaAlteracao(long codigo) {
+        // Mudar para alterar a data de abertura
         Conta conta = capturaConta(codigo);
         String retornoValidacao = validar(conta);
         if (retornoValidacao == null) {
@@ -77,6 +107,29 @@ public class TelaConta {
         }
     }
 
+    private void bloquear(Conta conta) {
+        if(conta.status == conta.ENCERRADA) {
+            System.out.println("Conta já Encerrada!");
+        }
+        else if(conta.status == conta.BLOQUEADA) System.out.println("Conta já Bloqueada!");
+        else conta.status = conta.BLOQUEADA;
+    }
+    private void encerrar(Conta conta){
+        if(conta.status == conta.ENCERRADA) {
+            System.out.println("Conta já Encerrada!");
+        }
+        else conta.status = conta.ENCERRADA;
+    }
+
+    private void desbloquear(Conta conta){
+        if(conta.status == conta.ENCERRADA) {
+            System.out.println("Conta já Encerrada!");
+        }
+        else if(conta.status == conta.ATIVA) System.out.println("Conta já Ativa!");
+        else conta.status = conta.ATIVA;
+    }
+
+
     private long processaBusca() {
         System.out.print("Digite o c�digo: ");
         long codigo = ENTRADA.nextLong();
@@ -87,6 +140,21 @@ public class TelaConta {
         } else {
             System.out.println("Código: " + conta.getCodigo());
             System.out.println("Nome: " + conta.getNome());
+            int conta_score = conta.calcularEscore();
+            switch (conta_score) {
+                case 1:
+                    System.out.println("Escore Conta: Bronze");
+                    break;
+                case 2:
+                    System.out.println("Escore Conta: Prata");
+                    break;
+                case 3:
+                    System.out.println("Escore Conta: Ouro");
+                    break;
+                case 4:
+                    System.out.println("Escore Conta: Diamante");
+                    break;
+            }
             return codigo;
         }
     }
@@ -113,7 +181,8 @@ public class TelaConta {
         System.out.print("Digite o tipo de conta (1- Corrente): ");
         // Pode ser um erro
         int codigoTipo = ENTRADA.nextInt();
-        return new Conta(codigo, nome, codigoTipo);
+        LocalDate dataAbertura = LocalDate.now();
+        return new Conta(codigo, nome, codigoTipo, dataAbertura);
     }
 
     private String validar(Conta conta) {
