@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9711a811-82f7-41c6-a1cc-e13a0925e6ad" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fase4/src/br/com/cesarschool/poo/mediators/ContaMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase4/src/br/com/cesarschool/poo/mediators/ContaMediator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fase4/src/br/com/cesarschool/poo/repositorios/RepositorioConta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase4/src/br/com/cesarschool/poo/repositorios/RepositorioConta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fase4/src/br/com/cesarschool/poo/telas/TelaConta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Fase4/src/br/com/cesarschool/poo/telas/TelaConta.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

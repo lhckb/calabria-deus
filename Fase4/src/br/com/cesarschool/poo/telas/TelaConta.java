@@ -35,11 +35,11 @@ public class TelaConta {
                     System.out.println("Escolha o tipo de Conta que deseja adicionar: 1- Conta Corrente | 2- Conta Poupança");
                     int escolha = ENTRADA.nextInt();
                     if(escolha == 1) {
-                        Conta conta = repositorioConta.buscar(codigo);
+                        Conta conta = repositorioConta.buscar(Long.toString(codigo));
                         bloquear(conta);
                     }
                     else {
-                        ContaPoupanca conta = repositorioConta.buscarPoupanca(codigo);
+                        ContaPoupanca conta = (ContaPoupanca) repositorioConta.buscar(Long.toString(codigo));
                         bloquear(conta);
                     }
                 }
@@ -49,11 +49,11 @@ public class TelaConta {
                     System.out.println("Escolha o tipo de Conta que deseja adicionar: 1- Conta Corrente | 2- Conta Poupança");
                     int escolha = ENTRADA.nextInt();
                     if(escolha == 1) {
-                        Conta conta = repositorioConta.buscar(codigo);
+                        Conta conta = repositorioConta.buscar(Long.toString(codigo));
                         encerrar(conta);
                     }
                     else {
-                        ContaPoupanca conta = repositorioConta.buscarPoupanca(codigo);
+                        ContaPoupanca conta = (ContaPoupanca) repositorioConta.buscar(Long.toString(codigo));
                         encerrar(conta);
                     }
                 }
@@ -64,11 +64,11 @@ public class TelaConta {
                     System.out.println("Escolha o tipo de Conta que deseja adicionar: 1- Conta Corrente | 2- Conta Poupança");
                     int escolha = ENTRADA.nextInt();
                     if(escolha == 1) {
-                        Conta conta = repositorioConta.buscar(codigo);
+                        Conta conta = repositorioConta.buscar(Long.toString(codigo));
                         desbloquear(conta);
                     }
                     else {
-                        ContaPoupanca conta = repositorioConta.buscarPoupanca(codigo);
+                        ContaPoupanca conta = (ContaPoupanca) repositorioConta.buscar(Long.toString(codigo));
                         desbloquear(conta);
                     }
                 }
@@ -77,9 +77,9 @@ public class TelaConta {
                 if(codigo != CODIGO_DESCONHECIDO) {
                     System.out.print("Digite o valor a ser creditado: ");
                     double valor = ENTRADA.nextDouble();
-                    Conta conta = repositorioConta.buscar(codigo);
+                    Conta conta = repositorioConta.buscar(Long.toString(codigo));
                     ContaMediator contaMediator = new ContaMediator();
-                    int resultado = contaMediator.creditar(conta, valor);
+                    int resultado = ContaMediator.creditar(conta, valor);
 
                     if(resultado != 0) System.out.println("Valor não aceito!");
                     else System.out.println("Valor creditado!");
@@ -89,9 +89,9 @@ public class TelaConta {
                 if(codigo != CODIGO_DESCONHECIDO) {
                     System.out.print("Digite o valor a ser debitado: ");
                     double valor = ENTRADA.nextDouble();
-                    Conta conta = repositorioConta.buscar(codigo);
+                    Conta conta = repositorioConta.buscar(Long.toString(codigo));
                     ContaMediator contaMediator = new ContaMediator();
-                    int resultado = contaMediator.debitar(conta, valor);
+                    int resultado = ContaMediator.debitar(conta, valor);
 
                     if(resultado != 0) System.out.println("Valor não aceito!");
                     else System.out.println("Valor debitado!");
@@ -220,7 +220,7 @@ public class TelaConta {
         int escolha = ENTRADA.nextInt();
 
         if(escolha == 1) {
-            Conta conta = repositorioConta.buscar(codigo);
+            Conta conta = repositorioConta.buscar(Long.toString(codigo));
             String retornoValidacao = validar(conta);
             Correntista correntistaCorrente = conta.correntista;
             if(correntistaCorrente.validaCpf(correntistaCorrente.cpf) == false) {
@@ -228,7 +228,7 @@ public class TelaConta {
             }
             else {
                 if (retornoValidacao == null) {
-                    boolean retornoRepositorio = repositorioConta.alterar(conta.getCodigo(), novaData(conta), 1);
+                    boolean retornoRepositorio = repositorioConta.alterar(conta);
                     if (retornoRepositorio) {
                         System.out.println("Conta alterado com sucesso!");
                     } else {
@@ -240,7 +240,7 @@ public class TelaConta {
             }
         }
         else {
-            ContaPoupanca contaPoupanca = repositorioConta.buscarPoupanca(codigo);
+            ContaPoupanca contaPoupanca = (ContaPoupanca) repositorioConta.buscar(Long.toString(codigo));
             String retornoValidacao = validar(contaPoupanca);
             Correntista correntistaPoupanca = contaPoupanca.correntista;
 
@@ -253,7 +253,7 @@ public class TelaConta {
                 contaPoupanca.alterar_juros(taxa_juros);
 
                 if (retornoValidacao == null) {
-                    boolean retornoRepositorio = repositorioConta.alterarPoupanca(contaPoupanca.getCodigo(), novaData(contaPoupanca), 2);
+                    boolean retornoRepositorio = repositorioConta.alterar(contaPoupanca);
                     if (retornoRepositorio) {
                         System.out.println("Conta alterado com sucesso!");
                     } else {
@@ -292,7 +292,7 @@ public class TelaConta {
         if (escolha == 1) {
             System.out.print("Digite o c�digo: ");
             long codigo = ENTRADA.nextLong();
-            Conta conta = repositorioConta.buscar(codigo);
+            Conta conta = repositorioConta.buscar(Long.toString(codigo));
             if (conta == null) {
                 System.out.println("Conta não encontrado!");
                 return CODIGO_DESCONHECIDO;
@@ -305,7 +305,7 @@ public class TelaConta {
         else {
             System.out.print("Digite o c�digo: ");
             long codigo = ENTRADA.nextLong();
-            ContaPoupanca contaPoupanca = repositorioConta.buscarPoupanca(codigo);
+            ContaPoupanca contaPoupanca = (ContaPoupanca) repositorioConta.buscar(Long.toString(codigo));
             if (contaPoupanca == null) {
                 System.out.println("Conta não encontrado!");
                 return CODIGO_DESCONHECIDO;
@@ -325,14 +325,14 @@ public class TelaConta {
         System.out.println("Deseja excluir que tipo de Conta: 1- Corrente | 2- Poupança");
         int escolha = ENTRADA.nextInt();
         if (escolha == 1) {
-            boolean retornoRepositorio = repositorioConta.excluir(codigo, 1);
+            boolean retornoRepositorio = repositorioConta.excluir(Long.toString(codigo));
             if (retornoRepositorio) {
                 System.out.println("Conta excluído com sucesso!");
             } else {
                 System.out.println("Erro na exclusão de conta!");
             }
         } else if (escolha == 2) {
-            boolean retornoRepositorio = repositorioConta.excluir(codigo, 2);
+            boolean retornoRepositorio = repositorioConta.excluir(Long.toString(codigo));
             if (retornoRepositorio) {
                 System.out.println("Conta excluído com sucesso!");
             } else {

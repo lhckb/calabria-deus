@@ -96,7 +96,8 @@ public class ContaMediator {
         return contas;
     }
 
-    public static Conta[] getOrdenadoPorDataDeAbertura(Conta[] contas) {
+    public static Conta[] getOrdenadoPorDataDeAbertura() {
+        Conta[] contas = repositorioConta.buscarTodos();
         ordenar(contas, new ComparadorContaDataDeAbertura());
         return contas;
     }

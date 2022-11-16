@@ -30,12 +30,12 @@ public class RepositorioConta extends RepositorioGenericoIdentificavel {
         return super.alterar(correntista);
     }
 
-    public Conta buscar(String cpfCnpj) {
-        return (Conta)super.buscar(cpfCnpj);
+    public Conta buscar(String codigo) {
+        return (Conta)super.buscar(codigo);
     }
 
-    public boolean excluir(String cpfCnpj) {
-        return super.excluir(cpfCnpj);
+    public boolean excluir(String codigo) {
+        return super.excluir(codigo);
     }
 
     public Conta[] buscarTodos() {
